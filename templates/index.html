@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Student Success AI — Academic Command Center</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+<div class="ambient ambient-a"></div><div class="ambient ambient-b"></div>
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="logo">✦</div><div><b>Student Success <span>AI</span></b><small>Personal academic command center</small></div></div>
+  <div class="status"><i></i><span>LOCAL AI</span><b>READY</b></div>
+</header>
+
+<section class="hero">
+  <div class="eyebrow">AI-POWERED STUDENT SUCCESS <span>•</span> PRIVATE BY DESIGN</div>
+  <h1>Know where you stand.<br><em>Know what to do next.</em></h1>
+  <p>Turn your academic snapshot into a clear action plan — with personalized insights, a 7-day roadmap, and an optional local AI coach.</p>
+  <div class="hero-points"><span>✓ No cloud database required</span><span>✓ Instant academic analysis</span><span>✓ Personalized study actions</span></div>
+</section>
+
+<nav class="tabs" aria-label="Main navigation">
+  <button class="tab active" data-tab="dashboard"><span>01</span> Dashboard</button>
+  <button class="tab" data-tab="coach"><span>02</span> AI Study Coach</button>
+  <button class="tab" data-tab="plan"><span>03</span> 7-Day Plan</button>
+</nav>
+
+<section id="dashboard" class="tabpage active">
+<div class="dashboard-grid">
+  <aside class="profile-card glass">
+    <div class="section-label">YOUR SNAPSHOT</div>
+    <h2>Build your academic profile</h2>
+    <p class="muted">Use your current numbers. The dashboard turns them into priorities you can act on today.</p>
+    <label>Name</label><input id="name" placeholder="Your name">
+    <div class="two-col">
+      <div><label>Attendance</label><div class="input-wrap"><input id="attendance" type="number" min="0" max="100" step=".1" placeholder="78"><span>%</span></div></div>
+      <div><label>CGPA</label><div class="input-wrap"><input id="cgpa" type="number" min="0" max="10" step=".01" placeholder="7.2"><span>/10</span></div></div>
+    </div>
+    <label>Subject needing attention</label><input id="weak" placeholder="e.g. Data Structures">
+    <label>Daily focused study</label><div class="input-wrap"><input id="hours" type="number" min="0" max="24" step=".5" placeholder="3"><span>hrs</span></div>
+    <button id="analyze" class="primary">Analyze My Progress <span>→</span></button>
+    <button id="demo" class="ghost">Load demo profile</button>
+    <div class="privacy"><span>●</span> Your demo runs locally on this computer.</div>
+  </aside>
+
+  <div class="content-stack">
+    <div class="metrics">
+      <div class="metric glass"><div class="metric-top"><span>READINESS</span><i>AI</i></div><div><strong id="score">--</strong><small>/100</small></div><p id="scoreNote">Waiting for your profile</p></div>
+      <div class="metric glass"><div class="metric-top"><span>ATTENDANCE</span><i>01</i></div><div><strong id="matt">--</strong><small>%</small></div><p>Current attendance</p></div>
+      <div class="metric glass"><div class="metric-top"><span>CGPA</span><i>02</i></div><div><strong id="mcgpa">--</strong><small>/10</small></div><p>Current academic level</p></div>
+      <div class="metric glass"><div class="metric-top"><span>FOCUS</span><i>03</i></div><div><strong id="mhrs">--</strong><small>hrs</small></div><p>Daily study target</p></div>
+    </div>
+
+    <div class="insight-grid">
+      <div class="panel glass health-panel">
+        <div class="panel-head"><div><div class="section-label">ACADEMIC HEALTH</div><h2 id="healthTitle">Your overview is waiting</h2></div><b id="priority" class="pill">READY</b></div>
+        <p id="summary" class="muted">Enter your profile and run an analysis to see where your effort will have the biggest impact.</p>
+        <div class="health-bars">
+          <div class="health-row"><div><span>Attendance</span><b id="atxt">--</b></div><div class="bar"><u id="abar"></u></div></div>
+          <div class="health-row"><div><span>CGPA</span><b id="ctxt">--</b></div><div class="bar"><u id="cbar"></u></div></div>
+          <div class="health-row"><div><span>Study consistency</span><b id="htxt">--</b></div><div class="bar"><u id="hbar"></u></div></div>
+        </div>
+      </div>
+      <div class="score-card glass"><div class="section-label">TODAY'S SIGNAL</div><div class="signal"><div class="signal-dot">✦</div><div><b id="signalTitle">Ready when you are</b><p id="signalText">Your first analysis will reveal the next best actions.</p></div></div><div class="mini-rule"></div><div class="quick"><span>Priority</span><b id="signalPriority">—</b></div><div class="quick"><span>Focus area</span><b id="signalWeak">—</b></div></div>
+    </div>
+
+    <div class="panel glass recommendations">
+      <div class="panel-head"><div><div class="section-label">NEXT BEST ACTIONS</div><h2>Personalized recommendations</h2></div><span class="ai-tag">GENERATED FROM YOUR PROFILE</span></div>
+      <div id="recs" class="rec-grid"><div class="empty"><span>✦</span><div><b>Nothing generated yet</b><p>Your personalized actions will appear here after analysis.</p></div></div></div>
+    </div>
+  </div>
+</div>
+</section>
+
+<section id="coach" class="tabpage">
+  <div class="coach-layout">
+    <div class="coach-intro glass"><div class="coach-orb">✦</div><div class="section-label">LOCAL AI ASSISTANT</div><h2>Your study coach, on demand.</h2><p>Ask for revision plans, time management ideas, explanations, or help prioritizing your weak subject.</p><div class="suggestions"><button data-q="Make a 3-hour study plan for today.">3-hour plan</button><button data-q="How should I revise my weak subject this week?">Revision strategy</button><button data-q="How can I prepare for an exam in 7 days?">7-day exam prep</button></div><div class="model-note"><i></i><span>Ollama / Qwen 3 8B when available<br><small>Built-in fallback keeps the demo functional.</small></span></div></div>
+    <div class="panel glass coach-panel"><div class="panel-head"><div><div class="section-label">AI STUDY COACH</div><h2>Ask anything academic</h2></div><span class="ai-tag">LOCAL</span></div><div id="chat" class="chat"><div class="bubble ai"><span class="bubble-icon">✦</span><div><b>Hi! I'm your study coach.</b><p>Tell me what you're working on and I'll turn it into practical next steps.</p></div></div></div><div class="chatbar"><input id="question" placeholder="e.g. How should I study Data Structures tonight?"><button id="ask" class="primary">Ask AI <span>→</span></button></div></div>
+  </div>
+</section>
+
+<section id="plan" class="tabpage">
+  <div class="plan-hero glass"><div><div class="section-label">PERSONALIZED ROADMAP</div><h2 id="planTitle">Your next 7 days, mapped out.</h2><p id="planintro">Generate your profile to build a study plan around your weak subject and available time.</p></div><div class="plan-badge"><span>7</span><small>DAYS</small></div></div>
+  <div id="plans" class="week-grid"><div class="plan-empty glass"><span>01</span><div><b>Start with your profile</b><p>Your personalized seven-day roadmap will appear here.</p></div></div></div>
+</section>
+
+<footer><span>Student Success AI</span> · Built for students · Local-first demo · Designed for action, not overload</footer>
+</div>
+<script>
+const $=id=>document.getElementById(id); let profile={};
+const tabs=document.querySelectorAll('.tab');
+tabs.forEach(btn=>btn.onclick=()=>{document.querySelectorAll('.tab,.tabpage').forEach(x=>x.classList.remove('active'));btn.classList.add('active');$(btn.dataset.tab).classList.add('active')});
+function bar(id,v){$(id).style.width=Math.max(0,Math.min(100,v))+'%'}
+function esc(s){return String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]))}
+function fillDemo(){ $('name').value='Student';$('attendance').value=82;$('cgpa').value=7.1;$('weak').value='Data Structures';$('hours').value=3.5; analyze(); }
+async function analyze(){
+ profile={name:$('name').value||'Student',attendance:$('attendance').value,cgpa:$('cgpa').value,weak_subject:$('weak').value,study_hours:$('hours').value};
+ if(profile.attendance===''||profile.cgpa===''||profile.study_hours===''){alert('Please fill attendance, CGPA and study hours.');return}
+ $('analyze').disabled=true;$('analyze').innerHTML='Analyzing your profile <span class="spin">◌</span>';
+ try{const r=await fetch('/api/analyze',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(profile)});const d=await r.json();if(!r.ok)throw new Error(d.error||'Analysis failed');
+ $('score').textContent=d.score;$('matt').textContent=d.attendance;$('mcgpa').textContent=d.cgpa;$('mhrs').textContent=d.study_hours;
+ $('scoreNote').textContent=d.risk;$('summary').textContent=`${d.name}, your readiness is ${d.score}/100. ${d.risk}. Focus on the actions below.`;$('healthTitle').textContent=d.priority==='High'?'A focused reset will help most.':d.priority==='Medium'?'You are building a workable base.':'You have a strong base to build on.';
+ $('priority').textContent=d.priority+' priority';$('priority').className='pill '+d.priority.toLowerCase();$('atxt').textContent=d.attendance+'%';$('ctxt').textContent=d.cgpa+'/10';$('htxt').textContent=d.study_pct+'%';bar('abar',d.attendance);bar('cbar',d.cgpa*10);bar('hbar',d.study_pct);
+ $('signalTitle').textContent=d.priority==='High'?'Protect your fundamentals first':d.priority==='Medium'?'Turn consistency into progress':'Keep the momentum going';$('signalText').textContent=d.recommendations[0][1];$('signalPriority').textContent=d.priority;$('signalWeak').textContent=d.weak_subject||'Weakest subject';
+ $('recs').innerHTML=d.recommendations.map(x=>`<article class="rec ${x[2]}"><div class="rec-icon">${x[2]==='good'?'✓':x[2]==='urgent'?'!':'→'}</div><div><span>${esc(x[0])}</span><b>${esc(x[1])}</b></div></article>`).join('');
+ $('plans').innerHTML=d.plan.map((x,i)=>`<article class="day-card glass"><div class="day-top"><span>${x[0]}</span><b>0${i+1}</b></div><h3>${esc(x[1])}</h3><p>${esc(x[2])}</p><div class="day-foot"><span>${esc(x[4])}</span><b>${x[3]} min</b></div></article>`).join('');$('planTitle').textContent=`${d.name}'s next 7 days`;$('planintro').textContent=`Built around ${d.weak_subject||'your weakest subject'} · ${d.study_hours} focused hours/day target`;
+ }catch(e){alert(e.message)}finally{$('analyze').disabled=false;$('analyze').innerHTML='Analyze My Progress <span>→</span>'}
+}
+$('analyze').onclick=analyze;$('demo').onclick=fillDemo;
+document.querySelectorAll('.suggestions button').forEach(b=>b.onclick=()=>{$('question').value=b.dataset.q;$('question').focus()});
+async function ask(){const q=$('question').value.trim();if(!q)return;if(!profile.attendance){alert('Run your profile analysis first so the coach can personalize its answer.');return}$('chat').innerHTML+=`<div class="bubble user"><div>${esc(q)}</div></div>`;$('question').value='';const typing=document.createElement('div');typing.className='bubble ai typing';typing.innerHTML='<span class="bubble-icon">✦</span><div>Thinking<span class="dots">...</span></div>';$('chat').appendChild(typing);$('chat').scrollTop=$('chat').scrollHeight;try{const r=await fetch('/api/coach',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({question:q,profile})});const d=await r.json();typing.className='bubble ai';typing.innerHTML=`<span class="bubble-icon">✦</span><div><b>${esc(d.source||'Study Coach')}</b><p>${esc(d.answer).replace(/\n/g,'<br>')}</p></div>`}catch(e){typing.innerHTML='<span class="bubble-icon">!</span><div>Coach is temporarily unavailable.</div>'}$('chat').scrollTop=$('chat').scrollHeight}
+$('ask').onclick=ask;$('question').onkeydown=e=>{if(e.key==='Enter')ask()};
+</script>
+</body></html>
